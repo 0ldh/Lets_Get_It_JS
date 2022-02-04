@@ -1,0 +1,39 @@
+.main {
+   margin : auto;
+   width: 200px;
+   margin-top: 100px;
+}
+
+.keyWord {
+   color: blue;
+   font-weight: bold;
+   font-size: 20px;
+   text-align: center;
+   margin-bottom: 10px;
+}
+
+input {
+   width: 200px;
+   height: 25px;
+}
+
+.timeZone {
+   text-align: center;
+   margin-top: 10px;
+   color: red;
+   font-weight: bold;
+}
+
+.point {
+   text-align: center;
+   margin-top: 20px;
+}
+
+.point > span {
+   color:green;
+   font-size: 25px;
+}
+
+#point {
+   font-weight: bold;
+}
