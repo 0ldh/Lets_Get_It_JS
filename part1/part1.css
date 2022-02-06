@@ -5,7 +5,7 @@
 }
 
 .keyWord {
-   color: blue;
+   color: aquamarine;
    font-weight: bold;
    font-size: 20px;
    text-align: center;
@@ -15,12 +15,16 @@
 input {
    width: 200px;
    height: 25px;
+   border-top: none;
+   border-left: none;
+   border-right: none;
+   border-bottom: 3px solid wheat;
 }
 
 .timeZone {
    text-align: center;
    margin-top: 10px;
-   color: red;
+   color: slateblue;
    font-weight: bold;
 }
 
@@ -30,7 +34,7 @@ input {
 }
 
 .point > span {
-   color:green;
+   color:greenyellow;
    font-size: 25px;
 }
 
