@@ -19,7 +19,7 @@ const timeCheck = () => {
         clearInterval(start)
         input.setAttribute("disabled", true)
         alert(`Game Over \npoint : ${point}`)
-    } else {
+    } else { 
         time -= 1
     }
 }
