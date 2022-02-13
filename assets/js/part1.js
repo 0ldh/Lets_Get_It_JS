@@ -19,7 +19,7 @@ const timeCheck = () => {
         clearInterval(start)
         input.setAttribute("disabled", true)
         alert(`Game Over \npoint : ${point}`)
-    } else {
+    } else { 
         time -= 1
     }
 }
@@ -32,11 +32,9 @@ input.addEventListener("keydown", function (event) {
     if (event.keyCode === 13) {
         const prevWord = keyWord.innerHTML
         word = this.value
-
         clearInterval(start)
 
         if (word.length > 1 && HanTools.dueum(prevWord[prevWord.length - 1]) === word[0]) {
-
             fetch(
                 `https://opendict.korean.go.kr/api/search?key=${apiKey}&q=${word}&advanced=y&method=exact`
             )
@@ -44,24 +42,19 @@ input.addEventListener("keydown", function (event) {
                     return res.text()
                 })
                 .then(data => {
-
                     const parser = new DOMParser()
                     const xmlDoc = parser.parseFromString(data, "text/xml")
-
                     const result = xmlDoc
                         .getElementsByTagName("total")[0]
                         .childNodes[0]
                         .nodeValue
-
                     if (result > 0) {
                         keyWord.innerHTML = word
                         this.value = ''
                         this.style.outline = ''
                         time = 10
-
                         point = point + (word.length * 10)
                         pointZone.innerHTML = point
-
                         fetch(
                             `https://opendict.korean.go.kr/api/search?key=${apiKey}&q=${HanTools.dueum(word[word.length - 1])}&advanced=y&sort=popular&type1=word&method=start&num=100`
                         )
