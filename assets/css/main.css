@@ -2102,7 +2102,8 @@
 		}
 
 		form :last-child {
-			margin-bottom: 0;
+			margin-left: 60px;
+			margin-top: 10px;
 		}
 
 		form .half:nth-last-child(2) {

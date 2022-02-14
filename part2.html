@@ -1,96 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<!-- Phantom by HTML5 UP html5up.net | @ajlkn Free for personal and commercial
+use under the CCA 3.0 license (html5up.net/license) -->
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <title>숫자야구</title>
+        <title>숫자야구 게임</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css"/>
+        <link rel="stylesheet" href="assets/css/part1.css"/>
+        <style>
+            .sprite {
+                background: url("images/무제-1.png") no-repeat -5px -3px;
+                width: 52px;
+                height: 54px;
+            }
+        </style>
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css"
+        /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css"
+        /><![endif]-->
     </head>
     <body>
-        <form id="form">
-            <input type="text" id="input">
-            <button>확인</button>
-        </form>
-        <div id="logs"></div>
+        <!-- Wrapper -->
+        <div id="wrapper">
 
-        <script>
-            const inputT = document.querySelector('#input');
-            const formT = document.querySelector('#form');
-            const logsT = document.querySelector('#logs');
+            <!-- Header -->
+            <header id="header">
+                <div class="inner">
 
-            let answer = [] // 숫자를 저장할 배열
-            for (let i = 0; i < 4; i++) {
-                let num = Math.floor(Math.random() * 9) // 난수 발생 및 저장
-                // 중복제거 IF문
-                if (answer.includes(num)) {
-                    i -= 1;
-                } else {
-                    answer.push(num);
-                }
-            }
-            console.log(answer)
+                    <!-- Logo -->
+                    <a href="index.html" class="logo">
+                        <span class="symbol">
+                            <div class="sprite"></div>
+                        </span><span class="title">스마트인재개발원</span>
+                    </a>
 
-            // 검증
-            const tries = [];
+                    <!-- Nav -->
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="#menu">Menu</a>
+                            </li>
+                        </ul>
+                    </nav>
 
-            let check = (input) => {
-                if (input.length !== 4) { // 길이
-                    return alert("4자리 숫자를 입력하세요")
-                }
-                if (new Set(input).size !== 4) { // 중복된 숫자
-                    return alert('숫자가 중복되지 않게 입력하세요')
-                }
-                if (tries.includes(input)) { // 이미 시도한 값
-                    return alert('이미 시도한 값입니다.')
-                }
-                return true;
-            }
-            let out = 0;
-            formT.addEventListener('submit', (event) => {
-                event.preventDefault(); // 새로고침 동작 막기
-                console.log('서브밋')
-                const value = inputT.value;
-                inputT.value = '';
-                if (!check(value)) {
-                    return;
-                }
-                tries.push(value);
-                if (answer.join('') === value) { // 답 확인 
-                    logsT.textContent = '홈런!';
-                    return;
-                }
-                if (tries.length >= 9) { // 10번째 시도인가?
-                    const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
-                    logsT.appendChild(message)
-                }
+                </div>
+            </header>
 
-                // 몇 스트 몇 볼 인지
-                let strike = 0;
-                let ball = 0;
-                for (let i = 0; i < answer.length; i++){
-                    const index = value.indexOf(answer[i]);
-                    if (index > -1){ // 일치하는 숫자 발견
-                        if (index === i){ // 인덱스번호도 같으면
-                            strike += 1;
-                        } else {
-                            ball += 1;
-                        }
-                    }
-                }
-                if (strike === 0 && ball ===0){
-                    out++
-                } else {
-                    logsT.append(`${value}: ${strike} 스트라이크 ${ball}볼`,document.createElement('br'))
-                }
-                if (out === 3){
-                    logsT.appendChild(message)
-                } else {
-                    logsT.append(`${value}:${out}아웃`, document.createElement('br'));
-                }
-                
-                tries.push(value);
-            })
-        </script>
-    </body>
-</html>
+            <!-- Menu -->
+            <nav id="menu">
+                <h2>Menu</h2>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="generic.html">Ipsum veroeros</a>
+                    </li>
+                    <li>
+                        <a href="generic.html">Tempus etiam</a>
+                    </li>
+                    <li>
+                        <a href="generic.html">Consequat dolor</a>
+                    </li>
+                    <li>
+                        <a href="elements.html">Elements</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Main -->
+            <div class="main">
+                <form id="form">
+                    <input type="text" id="input" autocomplete="off">
+                    <button>확인</button>
+                </form>
+                <div id="logs"></div>
+            </div>
+            
+            <script src="assets/js/part2.js"></script>
+        </body>
+    </html>

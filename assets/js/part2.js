@@ -1,66 +1,82 @@
-let 바디 = document.body;
-let 숫자후보;
-let 숫자배열;
+const inputT = document.querySelector('#input');
+const formT = document.querySelector('#form');
+const logsT = document.querySelector('#logs');
 
-function 숫자뽑기() {
-  숫자후보 = [1,2,3,4,5,6,7,8,9];
-  숫자배열 = [];
-  for (let i = 0; i < 4; i += 1) {
-    let 뽑은것 = 숫자후보.splice(Math.floor(Math.random() * (9 - i)), 1)[0];
-    숫자배열.push(뽑은것);
-  }
-}
-
-숫자뽑기();
-console.log(숫자배열);
-
-let 결과 = document.createElement('h1');
-바디.append(결과);
-let 폼 = document.createElement('form');
-document.body.append(폼);
-let 입력창 = document.createElement('input');
-폼.append(입력창);
-입력창.type = 'text';
-입력창.maxLength = 4;
-let 버튼 = document.createElement('button');
-버튼.textContent = '입력!';
-폼.append(버튼);
-
-let 틀린횟수 = 0;
-폼.addEventListener('submit', function 비동기(이벤트) { // 엔터를 쳤을 때
-  이벤트.preventDefault();
-  let 답 = 입력창.value;
-  if (답 === 숫자배열.join('')) { // 답이 맞으면
-    결과.textContent = '홈런';
-    입력창.value = '';
-    입력창.focus();
-    숫자뽑기();
-    틀린횟수 = 0;
-  } else { // 답이 틀리면
-    let 답배열 = 답.split('');
-    let 스트라이크 = 0;
-    let 볼 = 0;
-    틀린횟수 += 1;
-    if (틀린횟수 > 10) { // 10번 넘게 틀린 경우
-      결과.textContent = '10번 넘게 틀려서 실패! 답은' + 숫자배열.join(',') + '였습니다!';
-      입력창.value = '';
-      입력창.focus();
-      숫자뽑기();
-      틀린횟수 = 0;
-    } else { // 10번 미만으로 틀린 경우
-      console.log('답이 틀리면', 답배열);
-      for (let i = 0; i <= 3; i += 1) {
-        if (Number(답배열[i]) === 숫자배열[i]) { // 같은 자리인지 확인
-          console.log('같은 자리?');
-          스트라이크 += 1;
-        } else if (숫자배열.indexOf(Number(답배열[i])) > -1) { // 같은 자리는 아니지만, 숫자가 겹치는지 확인
-          console.log('겹치는 숫자?');
-          볼 += 1;
-        }
-      }
-      결과.textContent = 스트라이크 + '스트라이크 ' + 볼 + '볼입니다.';
-      입력창.value = '';
-      입력창.focus();
+let answer = [] // 숫자를 저장할 배열
+for (let i = 0; i < 4; i++) {
+    let num = Math.floor(Math.random() * 10) // 난수 발생 및 저장
+    // 중복제거 IF문
+    if (answer.includes(num)) {
+        i -= 1;
+    } else {
+        answer.push(num);
     }
-  }
-});
+}
+console.log(answer)
+
+// 검증
+const tries = [];
+
+let check = (input) => {
+    if (input.length !== 4) { // 길이
+        return alert("4자리 숫자를 입력하세요")
+    }
+    if (new Set(input).size !== 4) { // 중복된 숫자
+        return alert('숫자가 중복되지 않게 입력하세요')
+    }
+    if (tries.includes(input)) { // 이미 시도한 값
+        return alert('이미 시도한 값입니다.')
+    }
+    return true;
+}
+let out = 0;
+formT.addEventListener('submit', (event) => {
+    event.preventDefault(); // 새로고침 동작 막기
+    const value = inputT.value;
+    inputT.value = '';
+
+    // 검증
+    if (!check(value)) {
+        return;
+    }
+    tries.push(value);
+    if (answer.join('') === value) { // 답 확인
+        logsT.textContent = '홈런!';
+        inputT.setAttribute("disabled", true)
+        return;
+    }
+    
+    if (tries.length >= 10) { // 10번째 시도인가?
+        const message = document.createTextNode(`패배! 정답은 ${answer.join('')}`);
+        logsT.appendChild(message)
+        inputT.setAttribute("disabled", true)
+    }
+    
+
+    // 몇 스트 몇 볼 인지
+    let strike = 0;
+    let ball = 0;
+    for (let i = 0; i < answer.length; i++) {
+        const index = value.indexOf(answer[i]);
+        if (index > -1) { // 일치하는 숫자 발견
+            if (index === i) { // 인덱스번호도 같으면
+                strike += 1;
+            } else {
+                ball += 1;
+            }
+        }
+    }
+    if (strike === 0 && ball === 0 && tries.length < 10) {
+        out++
+        logsT.append(`${value}:${out}아웃`, document.createElement('br'));
+    } else if (tries.length < 10){
+        logsT.append(`${value}: ${strike} 스트라이크 ${ball}볼`,
+            document.createElement('br')
+        )
+    }
+    if (out === 3) {
+        logsT.appendChild(message)
+        inputT.setAttribute("disabled", true)
+    }
+    
+})
