@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>숫자야구</title>
-</head>
-<body>
-    <form id="form" submit="check">
-        <input type="text" id="input">
-        <button>확인</button>
-    </form>
-    <div id="logs"></div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>숫자야구</title>
+    </head>
+    <body>
+        <form id="form">
+            <input type="text" id="input">
+            <button>확인</button>
+        </form>
+        <div id="logs"></div>
 
-    <script>
-        const input = $('#input');
-        const form = $('#form');
-        const logs = $('#logs');
+        <script>
+            const input = $('#input');
+            const form = $('#form');
+            const logs = $('#logs');
 
-        form.submit(()=>{
-            console.log("실행")
-        })
+            input.addEventListener('sumbit', (event) => {
+                event.preventDefault();
+                const value = input.val
+                input.val = '';
+                const valid = checkInput(value);
+            })
 
-
-        let comNum = []
-        for (let i = 0; i < 4; i++){
-            let num = Math.floor(Math.random() * 9)
-            comNum.push(num)
-        }        
-    </script>
-</body>
+            let answer = [] // 숫자를 저장할 배열
+            for (let i = 0; i < 4; i++) {
+                let num = Math.floor(Math.random() * 9) // 난수 발생 및 저장
+                // 중복제거 IF문
+                if (answer.includes(num)) {
+                    i-=1;
+                } else {
+                    answer.push(num);
+                }
+            }
+            console.log(answer)
+        </script>
+    </body>
 </html>
