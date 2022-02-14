@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>숫자야구</title>
 </head>
 <body>
-   <script src="assets/js/part2.js"></script>
+    <form id="form" submit="check">
+        <input type="text" id="input">
+        <button>확인</button>
+    </form>
+    <div id="logs"></div>
+
+    <script>
+        const input = $('#input');
+        const form = $('#form');
+        const logs = $('#logs');
+
+        form.submit(()=>{
+            console.log("실행")
+        })
+
+
+        let comNum = []
+        for (let i = 0; i < 4; i++){
+            let num = Math.floor(Math.random() * 9)
+            comNum.push(num)
+        }        
+    </script>
 </body>
 </html>
