@@ -80,14 +80,29 @@ use under the CCA 3.0 license (html5up.net/license) -->
                     <strong>추첨 결과</strong>
                 </div>
                 <div></div>
-                <div id="bonus"><strong>보너스 번호</strong></div>
+                <div id="bonus">
+                    <strong>보너스 번호</strong>
+                </div>
+                <button id="buttom" type="button" onclick="testT">뽑기</button>
             </div>
         </div>
         <script>
-           const candidate = Array(45).fill().map((v, i) => i+1 ); //  i = 인덱스 번호 , v = 매개변수
-           console.log(candidate);
+            const $reslut = document.querySelector('#result');
+            const $bonusT = document.querySelector('#bonus');
+            const $buttonT = document.querySelector('#button');
+            const $candidate = Array(45)
+                .fill()
+                .map((v, i) => i + 1); // ? i = 인덱스 번호 , v = 매개변수
+            console.log($candidate);
+            let $lotto;
+            while (new Set($lotto).size !== 6){
+                $lotto = Array(6).fill().map((v, i) => Math.floor(Math.random()*45+1));
+                console.log($lotto)
+                
+            }
 
-
+    
+            
 
         </script>
 
