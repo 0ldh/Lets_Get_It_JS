@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<!-- Phantom by HTML5 UP html5up.net | @ajlkn Free for personal and commercial
+use under the CCA 3.0 license (html5up.net/license) -->
+<html>
+    <head>
+        <title>로또 추첨기</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="assets/css/main.css"/>
+        <link rel="stylesheet" href="assets/css/part2.css"/>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+        <style>
+            .tag {
+                position: relative;
+                display: block;
+                background-color: #FFF;
+                font-weight: 700;
+                font-size: 1rem;
+                border: none;
+                outline: none;
+                min-width: 150px;
+                text-align: center;
+                box-sizing: border-box;
+                padding: 4vh 8vw;
+                text-decoration: none;
+                color: #000;
+                letter-spacing: 2px;
+                cursor: -webkit-grab;
+                cursor: -moz-grab;
+                margin: auto;
+            }
+            .tag:before {
+                content: attr(data-content-default);
+            }
+            .tag:active {
+                cursor: -webkit-grabbing;
+                cursor: -moz-grabbing;
+                animation: spinner 200ms infinite linear;
+            }
+            .tag:active:before {
+                content: attr(data-content-spinning);
+            }
+            @keyframes spinner {
+                from {
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                    transform: rotateX(0) rotateY(-360deg);
+                }
+                to {
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                    transform: rotateX(360deg) rotateY(-360deg);
+                }
+            }
+            #container {
+                width:1200px;
+                height:1200px;
+                background-color: #EEE;
+                position: relative;
+            }
+            .ball {
+                position: absolute;
+                display: inline-block;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                animation-timing-function: linear;
+            }
+            @keyframes bounce {
+                0% {
+                    top: 0;
+                }
+                70% {
+                    top: 500px;
+                }
+                100% {
+                    top: 300px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container" class="tag" onclick="spin()">
+            <div id="ball1" class="ball" style="background-color: yellow; left: 500;"></div>
+            <div id="ball2" class="ball" style="background-color: blue; left: 100px;"></div>
+            <div id="ball3" class="ball" style="background-color: red; left: 200px;"></div>
+            <div id="ball4" class="ball" style="background-color: black; left: 300px;"></div>
+            <div id="ball5" class="ball" style="background-color: green; left: 400px;"></div>
+        </div>
+        <script>
+            function spin() {
+                var height = parseInt($("#container").css("height"), 10);
+                var ballHeight = parseInt($(".ball").css("height"), 10);
+                var delayOffset = 100;
+                var bounceHeight = 300;
+                $.each($(".ball"), function (index, obj) {
+                    $(obj)
+                        .stop()
+                        .delay(index * delayOffset);
+                });
+                anime();
+                function anime() {
+                    $.each($(".ball"), function (index, obj) {
+                        $(obj)
+                            .animate({
+                                "margin-top": (height - ballHeight) + "px",
+                                "margin-left": (height - ballHeight) + "px",
+                                "margin-right": (height - ballHeight) + "px"
+                            }, 500, "linear")
+                            .animate({
+                                "margin-top": (height - ballHeight - bounceHeight) + "px",
+                                "margin-left": (height - ballHeight - bounceHeight) + "px",
+                                "margin-right": (height - ballHeight - bounceHeight) + "px"
+                            }, 200, "linear")
+                            .animate({
+                                "margin-top": (height - ballHeight) + "px",
+                                "margin-left": (height - ballHeight) + "px",
+                                "margin-right": (height - ballHeight) + "px"
+                            }, 200, "linear")
+                            .animate({
+                                "margin-top": "0px",
+                                "margin-left": "0px",
+                                "margin-right": "0px"
+                            }, 500, "linear", anime);
+                    });
+                }
+            };
+        </script>
+    </body>
+</html>
