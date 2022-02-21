@@ -53,7 +53,6 @@ use under the CCA 3.0 license (html5up.net/license) -->
             #bonus > div {
                 margin-left: 20px;
             }
-
         </style>
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css"
         /><![endif]-->
@@ -161,6 +160,7 @@ use under the CCA 3.0 license (html5up.net/license) -->
                     .map((v, i) => i + 1); // ? i = 인덱스 번호 , v = 매개변수이나 매개변수 없이 인덱스 번호 i만을 사용할 수 없어서,
                 // undefind를 매개변수로 받지만 사용하지는 않음 그리고 인덱스 번호 + 1 을 값으로 리턴함
                 console.log(candidateA);
+                
 
                 // 로또 숫자 뽑기 방법 2
                 let count = 0;
@@ -170,31 +170,33 @@ use under the CCA 3.0 license (html5up.net/license) -->
                     answerA[count] = candidateA[indexN];
                     num = answerA[count];
                     candidateA.splice(indexN, 1)
-                    ballcss(num, reslutT)
+                    
                     /*let resT = document.createTextNode(`${answerA[count]} `)
                     reslutT.appendChild(resT) */
-                    
+
                     if (count === 6) {
-                        console.log(`전체 배열 : ${answerA}`)
-                        console.log(answerA[6])
                         let bonusN = answerA[6];
                         delete answerA[6];
-                        
+                        ballcss(bonusN, bonusT)
+                        clearInterval(timedel)    
+                        return;                   
+                    }
+                    count = count + 1;
+                    ballcss(num, reslutT)
+                    console.log(count)
+                }, 1000);
+                setTimeout(() => {
+                        console.log("실행됨")
                         // sort 정렬 버블 정렬
                         answerA.sort((a, b) => a - b);
                         console.log(answerA.join(' '))
                         reslutT.textContent = ` `;
-                        for( let i = 0; i < answerA.length-1; i++){
+                        for (let i = 0; i < answerA.length - 1; i++) {
                             let resN = answerA[i];
                             ballcss(resN, reslutT)
                         }
-                        // reslutT.textContent = `${answerA.join(" ")}`
-                        ballcss(bonusN, bonusT)
-                        clearInterval(timedel)
                         return buttonT.removeAttribute("disabled");
-                    }
-                    count = count + 1;
-                }, 1000);
+                    }, 10000);
 
             }
 
