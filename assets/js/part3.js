@@ -1,3 +1,25 @@
+function ballcss(num, reslutT) {
+   console.log('공뽑기 실행')
+   let ball = document.createElement('div');
+   ball.textContent = num;
+   ball.className = 'ball';
+   let color;
+   if (num <= 10) {
+       color = 'gold';
+   } else if (num <= 20) {
+       color = 'blue';
+   } else if (num <= 30) {
+       color = 'red';
+   } else if (num <= 40) {
+       color = 'black';
+       ball.style.color = 'white';
+   } else {
+       color = 'green';
+   }
+   ball.style.background = color;
+   reslutT.appendChild(ball)
+}
+
 const reslutT = document.querySelector('#result');
 const bonusT = document.querySelector('#bonus');
 const buttonT = document.querySelector('#button');
@@ -12,12 +34,12 @@ let draw = () => {
     let candidateA = Array(45) // 길이 45짜리 배열 생성
         .fill() // undefind로 채움
         .map((v, i) => i + 1); // ? i = 인덱스 번호 , v = 매개변수이나 매개변수 없이 인덱스 번호 i만을 사용할 수 없어서,
-    // undefind를 매개변수로 받지만 사용하지는 않음 그리고 인덱스 번호 + 1 을 값으로 리턴함
-    console.log(candidateA);
+    // ? undefind를 매개변수로 받지만 사용하지는 않음 그리고 인덱스 번호 + 1 을 값으로 리턴함
 
     // 로또 숫자 뽑기 방법 2
     let count = 0;
     let num = 0;
+
     let timedel = setInterval(() => {
         let indexN = Math.floor(Math.random() * (candidateA.length - 1) + 1)
         answerA[count] = candidateA[indexN];
@@ -36,13 +58,12 @@ let draw = () => {
         }
         count = count + 1;
         ballcss(num, reslutT)
-        console.log(count)
     }, 1000);
+
     setTimeout(() => {
         console.log("실행됨")
         // sort 정렬 버블 정렬
         answerA.sort((a, b) => a - b);
-        console.log(answerA.join(' '))
         reslutT.textContent = ` `;
         for (let i = 0; i < answerA.length - 1; i++) {
             let resN = answerA[i];
