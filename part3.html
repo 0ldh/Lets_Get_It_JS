@@ -43,7 +43,7 @@ use under the CCA 3.0 license (html5up.net/license) -->
                 text-align: center;
                 margin-right: 20px;
                 font-weight: bold;
-                color: black;
+                color: whitesmoke;
             }
 
             div {
@@ -69,13 +69,14 @@ use under the CCA 3.0 license (html5up.net/license) -->
                 ball.className = 'ball';
                 let color;
                 if (num <= 10) {
-                    color = 'red';
+                    color = 'gold';
                 } else if (num <= 20) {
-                    color = 'orange';
-                } else if (num <= 30) {
-                    color = 'yellow';
-                } else if (num <= 40) {
                     color = 'blue';
+                } else if (num <= 30) {
+                    color = 'red';
+                } else if (num <= 40) {
+                    color = 'black';
+                    ball.style.color = 'white';
                 } else {
                     color = 'green';
                 }
