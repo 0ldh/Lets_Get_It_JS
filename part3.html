@@ -21,12 +21,39 @@ use under the CCA 3.0 license (html5up.net/license) -->
                 height: 100px;
             }
             #button {
-                margin-left: 65px;
+                margin-left: 215px;
+                margin-top: 10px;
             }
 
-            #result, #bonus, #resultdiv, #bonusdiv{
+            #bonus,
+            #bonusdiv,
+            #result,
+            #resultdiv {
                 text-align: center;
             }
+
+            .ball {
+                display: inline-block;
+                border: 1px solid black;
+                border-radius: 20px;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 20px;
+                text-align: center;
+                margin-right: 20px;
+                font-weight: bold;
+                color: black;
+            }
+
+            div {
+                width: 500px;
+            }
+
+            #bonus > div {
+                margin-left: 20px;
+            }
+
         </style>
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css"
         /><![endif]-->
@@ -34,6 +61,28 @@ use under the CCA 3.0 license (html5up.net/license) -->
         /><![endif]-->
     </head>
     <body>
+        <script>
+            function ballcss(num, reslutT) {
+                console.log('공뽑기 실행')
+                let ball = document.createElement('div');
+                ball.textContent = num;
+                ball.className = 'ball';
+                let color;
+                if (num <= 10) {
+                    color = 'red';
+                } else if (num <= 20) {
+                    color = 'orange';
+                } else if (num <= 30) {
+                    color = 'yellow';
+                } else if (num <= 40) {
+                    color = 'blue';
+                } else {
+                    color = 'green';
+                }
+                ball.style.background = color;
+                reslutT.appendChild(ball)
+            }
+        </script>
         <!-- Wrapper -->
         <div id="wrapper">
 
@@ -104,42 +153,49 @@ use under the CCA 3.0 license (html5up.net/license) -->
             let answerA = Array(7);
             let draw = () => {
                 buttonT.setAttribute("disabled", true)
-                reslutT.textContent=` `;
-                bonusT.textContent=` `;
+                reslutT.textContent = ` `;
+                bonusT.textContent = ` `;
                 let candidateA = Array(45) // 길이 45짜리 배열 생성
                     .fill() // undefind로 채움
                     .map((v, i) => i + 1); // ? i = 인덱스 번호 , v = 매개변수이나 매개변수 없이 인덱스 번호 i만을 사용할 수 없어서,
                 // undefind를 매개변수로 받지만 사용하지는 않음 그리고 인덱스 번호 + 1 을 값으로 리턴함
                 console.log(candidateA);
 
-                
-
                 // 로또 숫자 뽑기 방법 2
                 let count = 0;
+                let num = 0;
                 let timedel = setInterval(() => {
-                let indexN = Math.floor(Math.random() * (candidateA.length-1) + 1)
-                answerA[count] = candidateA[indexN];
-                candidateA.splice(indexN, 1)
-                let resT = document.createTextNode(`${answerA[count]} `)
-                reslutT.appendChild(resT)
-                if (count === 6){
-                    console.log(`전체 배열 : ${answerA}`)
-                    console.log(answerA[6])
-                    let bonusN = answerA[6];
-                    delete answerA[6];
-                    // sort 정렬 버블 정렬
-                    answerA.sort((a,b)=>a-b);
-                    console.log(answerA.join(' '))
-                    reslutT.textContent = `${answerA.join(" ")}`
-                    bonusT.textContent = `${bonusN}`
-                    clearInterval(timedel)
-                    return buttonT.removeAttribute("disabled");
-                }
-                count = count + 1 ;
+                    let indexN = Math.floor(Math.random() * (candidateA.length - 1) + 1)
+                    answerA[count] = candidateA[indexN];
+                    num = answerA[count];
+                    candidateA.splice(indexN, 1)
+                    ballcss(num, reslutT)
+                    /*let resT = document.createTextNode(`${answerA[count]} `)
+                    reslutT.appendChild(resT) */
+                    
+                    if (count === 6) {
+                        console.log(`전체 배열 : ${answerA}`)
+                        console.log(answerA[6])
+                        let bonusN = answerA[6];
+                        delete answerA[6];
+                        
+                        // sort 정렬 버블 정렬
+                        answerA.sort((a, b) => a - b);
+                        console.log(answerA.join(' '))
+                        reslutT.textContent = ` `;
+                        for( let i = 0; i < answerA.length-1; i++){
+                            let resN = answerA[i];
+                            ballcss(resN, reslutT)
+                        }
+                        // reslutT.textContent = `${answerA.join(" ")}`
+                        ballcss(bonusN, bonusT)
+                        clearInterval(timedel)
+                        return buttonT.removeAttribute("disabled");
+                    }
+                    count = count + 1;
                 }, 1000);
 
-        }
-            
+            }
 
             /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
             /* // 로또 난수 만들기 방법 2
@@ -160,7 +216,7 @@ use under the CCA 3.0 license (html5up.net/license) -->
                 setTimeout(() => {
                 let resT = document.createTextNode(`${answerA[i]} `)
                 console.log(resT)
-                reslutT.appendChild(resT)     
+                reslutT.appendChild(resT)
                 }, 3000);
             }
 
