@@ -4,7 +4,7 @@
    height: 100px;
 }
 #button {
-   margin-left: 215px;
+   margin-left: 440px;
    margin-top: 10px;
 }
 
@@ -30,7 +30,8 @@
 }
 
 div {
-   width: 500px;
+   width: 960px;
+
 }
 
 #bonus > div {
