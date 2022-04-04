@@ -72,13 +72,13 @@ use under the CCA 3.0 license (html5up.net/license) -->
             <div class="game">
                 <div class="com">
                     <h1 style="color: #D070FB;">Computer &nbsp;&nbsp; <span class="score">0</span></h1>
-                    <div class="siss" >
+                    <div id="csiss" >
                         <img src="./images/siss.png">
                     </div>
-                    <div class="rock">
+                    <div id="crock">
                         <img src="./images/rock.png">
                     </div>
-                    <div class="paper">
+                    <div id="cpaper">
                         <img src="./images/paper.png">
                     </div>
                 </div>
@@ -89,13 +89,13 @@ use under the CCA 3.0 license (html5up.net/license) -->
                 <div class="user">
                     <h1 style="color: #7A56FE;"><span class="score">0</span>&nbsp;&nbsp; USER </h1>
                     
-                    <div id="siss" onclick="sel(this.id)">
+                    <div id="usiss" onclick="sel(this.id)">
                         <img src="./images/siss.png" alt="">
                     </div>
-                    <div id="rock" onclick="sel(this.id)">
+                    <div id="urock" onclick="sel(this.id)">
                         <img src="./images/rock.png" alt="">
                     </div>
-                    <div id="paper" onclick="sel(this.id)">
+                    <div id="upaper" onclick="sel(this.id)">
                         <img src="./images/paper.png" alt="">
                     </div>
                 </div>
@@ -104,34 +104,52 @@ use under the CCA 3.0 license (html5up.net/license) -->
         <script>
             arr = ["rock", "paper", "siss"];
             let userpick;
-            const user = document.querySelector(".user");
-            const rock = document.querySelector("#rock");
-            const paper = document.querySelector("#paper");
-            const siss = document.querySelector("#siss");
+            let compick;
+            const urock = document.querySelector("#urock");
+            const upaper = document.querySelector("#upaper");
+            const usiss = document.querySelector("#usiss");
+
+            const crock = document.querySelector("#crock");
+            const cpaper = document.querySelector("#cpaper");
+            const csiss = document.querySelector("#csiss");
             const sel = (rps) => {
-                if (rps == "rock") {
-                    userpick = "rock";
-                    rock.style.textAlign ="left";
-                    paper.style.textAlign ="";
-                    siss.style.textAlign ="";
+                if (rps == "urock") {
+                    userpick = rps;
+                    urock.style.textAlign ="left";
+                    upaper.style.textAlign ="";
+                    usiss.style.textAlign ="";
                 }
-                else if (rps == "paper"){
-                    userpick = "paper";
-                    paper.style.textAlign ="left";
-                    rock.style.textAlign ="";
-                    siss.style.textAlign ="";
+                else if (rps == "upaper"){
+                    userpick = rps;
+                    upaper.style.textAlign ="left";
+                    urock.style.textAlign ="";
+                    usiss.style.textAlign ="";
                 }
-                else if (rps == "siss"){
-                    userpick = "siss";
-                    siss.style.textAlign ="left";
-                    paper.style.textAlign ="";
-                    rock.style.textAlign ="";
+                else if (rps == "usiss"){
+                    userpick = rps;
+                    usiss.style.textAlign ="left";
+                    upaper.style.textAlign ="";
+                    urock.style.textAlign ="";
                 }
             }
 
             const start = () =>{
                 console.log("게임 시작");
-                const draw = Math.random() *100;
+                const draw = Math.floor(Math.random() * 3)
+                compick = arr[draw];
+                if (compick == "rock"){
+                    crock.style.textAlign ="right";
+                    cpaper.style.textAlign ="";
+                    csiss.style.textAlign ="";
+                } else if (compick == "paper"){
+                    crock.style.textAlign ="";
+                    cpaper.style.textAlign ="right";
+                    csiss.style.textAlign ="";
+                } else {
+                    crock.style.textAlign ="";
+                    cpaper.style.textAlign ="";
+                    csiss.style.textAlign ="right";
+                }
                 console.log(draw);
             }
         </script>
