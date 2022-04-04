@@ -110,34 +110,46 @@ use under the CCA 3.0 license (html5up.net/license) -->
             <div class="game">
                 <div class="com">
                     <h1 style="color: #D070FB;">Computer</h1>
-                    <div class="siss">
-                        <img src="./images/siss.png" alt="">
+                    <div class="siss" >
+                        <img src="./images/siss.png">
                     </div>
                     <div class="rock">
-                        <img src="./images/rock.png" alt="">
+                        <img src="./images/rock.png">
                     </div>
                     <div class="paper">
-                        <img src="./images/paper.png" alt="">
+                        <img src="./images/paper.png">
                     </div>
                 </div>
                 <div class="vs">
                     <h1><span class="V">V</span><span class="S">S</span></h1>
-                    <button id="button">뽑기</button>
+                    <button id="button" onclick="start()">시작</button>
                 </div>
                 <div class="user">
                     <h1 style="color: #7A56FE;">USER</h1>
-                    <div class="siss">
+                    <div class="siss" onclick="sel('siss')">
                         <img src="./images/siss.png" alt="">
                     </div>
-                    <div class="rock">
+                    <div class="rock" onclick="sel('rock')">
                         <img src="./images/rock.png" alt="">
                     </div>
-                    <div class="paper">
+                    <div class="paper" onclick="sel('paper')">
                         <img src="./images/paper.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
-        <script></script>
+        <script>
+            arr = ["rock", "paper", "siss"];
+            const sel = (rps) => {
+                const user = document.querySelector(".user");
+                if (rps == "rock") {
+                    
+                }
+            }
+
+            const start = () =>{
+                console.log("게임 시작");
+            }
+        </script>
     </body>
 </html>
