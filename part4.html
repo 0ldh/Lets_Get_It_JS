@@ -8,8 +8,6 @@ use under the CCA 3.0 license (html5up.net/license) -->
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="assets/css/main.css"/>
-        <link rel="stylesheet" href="assets/css/part4.css">
-
         <!-- <link rel="stylesheet" href="assets/css/ie9.css"/> -->
         <!-- <link rel="stylesheet" href="assets/css/ie8.css"/> -->
         <style>
@@ -91,13 +89,13 @@ use under the CCA 3.0 license (html5up.net/license) -->
                 <div class="user">
                     <h1 style="color: #7A56FE;"><span class="score">0</span>&nbsp;&nbsp; USER </h1>
                     
-                    <div class="siss" onclick="sel('siss')">
+                    <div id="siss" onclick="sel(this.id)">
                         <img src="./images/siss.png" alt="">
                     </div>
-                    <div class="rock" onclick="sel('rock')">
+                    <div id="rock" onclick="sel(this.id)">
                         <img src="./images/rock.png" alt="">
                     </div>
-                    <div class="paper" onclick="sel('paper')">
+                    <div id="paper" onclick="sel(this.id)">
                         <img src="./images/paper.png" alt="">
                     </div>
                 </div>
@@ -107,27 +105,36 @@ use under the CCA 3.0 license (html5up.net/license) -->
             arr = ["rock", "paper", "siss"];
             let userpick;
             const user = document.querySelector(".user");
+            const rock = document.querySelector("#rock");
+            const paper = document.querySelector("#paper");
+            const siss = document.querySelector("#siss");
             const sel = (rps) => {
                 if (rps == "rock") {
-                    console.log(rps);
-                    const rock = document.querySelector(".rock");
                     userpick = "rock";
-                    console.log(rock);
                     rock.style.textAlign ="left";
+                    paper.style.textAlign ="";
+                    siss.style.textAlign ="";
                 }
                 else if (rps == "paper"){
-                    paperstyle = document.querySelector(".paper");
                     userpick = "paper";
+                    paper.style.textAlign ="left";
+                    rock.style.textAlign ="";
+                    siss.style.textAlign ="";
                 }
                 else if (rps == "siss"){
-                    sissstyle = document.querySelector(".siss");
                     userpick = "siss";
+                    siss.style.textAlign ="left";
+                    paper.style.textAlign ="";
+                    rock.style.textAlign ="";
                 }
             }
 
             const start = () =>{
                 console.log("게임 시작");
+                const draw = Math.random() *100;
+                console.log(draw);
             }
         </script>
     </body>
+    <link rel="stylesheet" href="assets/css/part4.css">
 </html>

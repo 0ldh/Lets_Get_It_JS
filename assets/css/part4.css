@@ -29,6 +29,9 @@ div > img {
     width: 20%;
     height: 80%;
 }
+.user > div {
+    cursor: pointer;
+}
 
 .user > div > img {
     transform: scaleX(-1);
