@@ -1,0 +1,42 @@
+.sprite {
+    background: url("images/무제-1.png") no-repeat -5px -3px;
+    width: 52px;
+    height: 54px;
+}
+.score {
+    color: #000;
+}
+
+.game {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.paper {
+    color: #1E90FF;
+}
+
+.siss {
+    color: #00EF91;
+}
+
+.rock {
+    color: #F05650;
+}
+
+div > img {
+    text-align: center;
+    width: 20%;
+    height: 80%;
+}
+
+.user > div > img {
+    transform: scaleX(-1);
+}
+
+.V {
+    color: #ff0000;
+}
+.S {
+    color: #0000FF;
+}

@@ -8,48 +8,12 @@ use under the CCA 3.0 license (html5up.net/license) -->
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="assets/css/main.css"/>
+        <link rel="stylesheet" href="assets/css/part4.css">
 
         <!-- <link rel="stylesheet" href="assets/css/ie9.css"/> -->
         <!-- <link rel="stylesheet" href="assets/css/ie8.css"/> -->
         <style>
-            .sprite {
-                background: url("images/무제-1.png") no-repeat -5px -3px;
-                width: 52px;
-                height: 54px;
-            }
-            .game {
-                display: flex;
-                justify-content: space-around;
-                text-align: center;
-            }
-            .paper {
-                color: #1E90FF;
-            }
 
-            .siss {
-                color: #00EF91;
-            }
-
-            .rock {
-                color: #F05650;
-            }
-
-            div > img {
-                text-align: center;
-                width: 30%;
-                height: 80%;
-            }
-
-            .user > div > img {
-                transform: scaleX(-1);
-            }
-
-            .V {
-                color: #ff0000;
-            }
-            .S {
-                color: #0000FF;
-            }
         </style>
     </head>
     <body>
@@ -102,14 +66,14 @@ use under the CCA 3.0 license (html5up.net/license) -->
             </nav>
             <!-- Main -->
             <div class="main" style="text-align: center;">
-                <h1>
+                <h2>
                     <span class="siss">가위</span><span class="rock">바위</span><span class="paper">보</span>
-                    게임</h1>
+                </h2>
             </div>
             <!-- 게임판 -->
             <div class="game">
                 <div class="com">
-                    <h1 style="color: #D070FB;">Computer</h1>
+                    <h1 style="color: #D070FB;">Computer &nbsp;&nbsp; <span class="score">0</span></h1>
                     <div class="siss" >
                         <img src="./images/siss.png">
                     </div>
@@ -125,7 +89,8 @@ use under the CCA 3.0 license (html5up.net/license) -->
                     <button id="button" onclick="start()">시작</button>
                 </div>
                 <div class="user">
-                    <h1 style="color: #7A56FE;">USER</h1>
+                    <h1 style="color: #7A56FE;"><span class="score">0</span>&nbsp;&nbsp; USER </h1>
+                    
                     <div class="siss" onclick="sel('siss')">
                         <img src="./images/siss.png" alt="">
                     </div>
@@ -140,10 +105,21 @@ use under the CCA 3.0 license (html5up.net/license) -->
         </div>
         <script>
             arr = ["rock", "paper", "siss"];
+            let userpick;
+            const user = document.querySelector(".user");
             const sel = (rps) => {
-                const user = document.querySelector(".user");
                 if (rps == "rock") {
-                    
+                    console.log(rps);
+                    document.querySelector(".rock").style.textAlign = "left";
+                    userpick = "rock";
+                }
+                else if (rps == "paper"){
+                    paperstyle = document.querySelector(".paper");
+                    userpick = "paper";
+                }
+                else if (rps == "siss"){
+                    sissstyle = document.querySelector(".siss");
+                    userpick = "siss";
                 }
             }
 
