@@ -114,26 +114,29 @@ use under the CCA 3.0 license (html5up.net/license) -->
             const csiss = document.querySelector("#csiss");
             const sel = (rps) => {
                 if (rps == "urock") {
-                    userpick = rps;
+                    userpick = "rock";
                     urock.style.textAlign ="left";
                     upaper.style.textAlign ="";
                     usiss.style.textAlign ="";
                 }
                 else if (rps == "upaper"){
-                    userpick = rps;
+                    userpick = "paper";
                     upaper.style.textAlign ="left";
                     urock.style.textAlign ="";
                     usiss.style.textAlign ="";
                 }
                 else if (rps == "usiss"){
-                    userpick = rps;
+                    userpick = "siss";
                     usiss.style.textAlign ="left";
                     upaper.style.textAlign ="";
                     urock.style.textAlign ="";
+                    console.log(userpick);
                 }
             }
 
             const start = () =>{
+                let res = document.createElement("h1");
+                const vs = document.getElementsByClassName("vs");
                 console.log("게임 시작");
                 const draw = Math.floor(Math.random() * 3)
                 compick = arr[draw];
@@ -150,7 +153,33 @@ use under the CCA 3.0 license (html5up.net/license) -->
                     cpaper.style.textAlign ="";
                     csiss.style.textAlign ="right";
                 }
-                console.log(draw);
+
+                // 승패
+                document.querySelector(".vs").append(res);
+                if (compick == userpick){
+                    res.innerHTML = "무승부!!";
+                } else if (compick == "rock" ) {
+                    console.log("주먹");
+                    if (userpick == "paper") {
+                        res.innerHTML = "승리!!!";
+                    } else {
+                        res.innerHTML = "패배...";
+                    }
+                } else if (compick == "paper" ) {
+                    console.log("보");
+                    if (userpick == "siss") {
+                        res.innerHTML = "승리!!!";
+                    } else {
+                        res.innerHTML = "패배...";
+                    }
+                } else if (compick == "siss" ) {
+                    console.log("가위");
+                    if (userpick == "rock") {
+                        res.innerHTML = "승리!!!";
+                    } else {
+                        res.innerHTML = "패배...";
+                    }
+                } 
             }
         </script>
     </body>

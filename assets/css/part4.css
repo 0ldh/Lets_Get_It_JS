@@ -37,6 +37,10 @@ div > img {
     transform: scaleX(-1);
 }
 
+.vs {
+    width: 16%;
+}
+
 .V {
     color: #ff0000;
 }
