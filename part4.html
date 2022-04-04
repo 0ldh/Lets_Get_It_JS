@@ -8,25 +8,25 @@ use under the CCA 3.0 license (html5up.net/license) -->
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
         <link rel="stylesheet" href="assets/css/main.css"/>
-        
+
         <!-- <link rel="stylesheet" href="assets/css/ie9.css"/> -->
         <!-- <link rel="stylesheet" href="assets/css/ie8.css"/> -->
         <style>
-            .sprite {
-                background: url("images/무제-1.png") no-repeat -5px -3px;
-                width: 52px;
-                height: 54px;
+            .game {
+                display: flex;
+                justify-content: space-around;
+                text-align: center;
             }
             .paper {
-               color: #1E90FF;
+                color: #1E90FF;
             }
 
             .siss {
-               color: #00EF91;
+                color: #00EF91;
             }
 
             .rock {
-               color: #F05650;
+                color: #F05650;
             }
 
             div > img {
@@ -34,12 +34,14 @@ use under the CCA 3.0 license (html5up.net/license) -->
                 width: 70%;
                 height: 80%;
             }
+
+            .user > div > img {
+                transform: scaleX(-1);
+            }
         </style>
     </head>
     <body>
-        <script>
-
-        </script>
+        <script></script>
         <!-- Wrapper -->
         <div id="wrapper">
 
@@ -89,39 +91,37 @@ use under the CCA 3.0 license (html5up.net/license) -->
             </nav>
             <!-- Main -->
             <div class="main" style="text-align: center;">
-               <h1><span class="siss">가위</span><span class="rock">바위</span><span class="paper">보</span> 게임</h1>
+                <h1>
+                    <span class="siss">가위</span><span class="rock">바위</span><span class="paper">보</span>
+                    게임</h1>
             </div>
             <!-- 게임판 -->
-            <div class="game" style="display: flex; justify-content: space-around;">
-               <div class="com">
-                   <h1 style="color: #D070FB;">Computer</h1>
-                   <div class="siss">
-                       <img src="./images/siss.png" alt="">
-                   </div>
-                   <div class="rock">
-
-                   </div>
-                   <div class="paper">
-
-                   </div>
-               </div>
-               <div class="user">
-                   <h1 style="color: #7A56FE;">USER</h1>
-                   <div class="siss">
-
-                   </div>
-                   <div class="rock">
-
-                   </div>
-                   <div class="paper">
-                       
-                   </div>
-               </div>
+            <div class="game">
+                <div class="com">
+                    <h1 style="color: #D070FB;">Computer</h1>
+                    <div class="siss">
+                        <img src="./images/siss.png" alt="">
+                    </div>
+                    <div class="rock">
+                        <img src="./images/rock.png" alt="">
+                    </div>
+                    <div class="paper"></div>
+                </div>
+                <div class="vs">
+                    vs
+                </div>
+                <div class="user">
+                    <h1 style="color: #7A56FE;">USER</h1>
+                    <div class="siss">
+                        <img src="./images/siss.png" alt="">
+                    </div>
+                    <div class="rock">
+                        <img src="./images/rock.png" alt="">
+                    </div>
+                    <div class="paper"></div>
+                </div>
             </div>
         </div>
-        <script>
-
-
-        </script>
+        <script></script>
     </body>
 </html>
