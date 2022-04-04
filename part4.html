@@ -110,8 +110,10 @@ use under the CCA 3.0 license (html5up.net/license) -->
             const sel = (rps) => {
                 if (rps == "rock") {
                     console.log(rps);
-                    document.querySelector(".rock").style.textAlign = "left";
+                    const rock = document.querySelector(".rock");
                     userpick = "rock";
+                    console.log(rock);
+                    rock.style.textAlign ="left";
                 }
                 else if (rps == "paper"){
                     paperstyle = document.querySelector(".paper");
