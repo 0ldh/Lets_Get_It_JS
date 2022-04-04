@@ -12,6 +12,11 @@ use under the CCA 3.0 license (html5up.net/license) -->
         <!-- <link rel="stylesheet" href="assets/css/ie9.css"/> -->
         <!-- <link rel="stylesheet" href="assets/css/ie8.css"/> -->
         <style>
+            .sprite {
+                background: url("images/무제-1.png") no-repeat -5px -3px;
+                width: 52px;
+                height: 54px;
+            }
             .game {
                 display: flex;
                 justify-content: space-around;
@@ -31,17 +36,23 @@ use under the CCA 3.0 license (html5up.net/license) -->
 
             div > img {
                 text-align: center;
-                width: 70%;
+                width: 30%;
                 height: 80%;
             }
 
             .user > div > img {
                 transform: scaleX(-1);
             }
+
+            .V {
+                color: #ff0000;
+            }
+            .S {
+                color: #0000FF;
+            }
         </style>
     </head>
     <body>
-        <script></script>
         <!-- Wrapper -->
         <div id="wrapper">
 
@@ -105,10 +116,13 @@ use under the CCA 3.0 license (html5up.net/license) -->
                     <div class="rock">
                         <img src="./images/rock.png" alt="">
                     </div>
-                    <div class="paper"></div>
+                    <div class="paper">
+                        <img src="./images/paper.png" alt="">
+                    </div>
                 </div>
                 <div class="vs">
-                    vs
+                    <h1><span class="V">V</span><span class="S">S</span></h1>
+                    <button id="button">뽑기</button>
                 </div>
                 <div class="user">
                     <h1 style="color: #7A56FE;">USER</h1>
@@ -118,7 +132,9 @@ use under the CCA 3.0 license (html5up.net/license) -->
                     <div class="rock">
                         <img src="./images/rock.png" alt="">
                     </div>
-                    <div class="paper"></div>
+                    <div class="paper">
+                        <img src="./images/paper.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
