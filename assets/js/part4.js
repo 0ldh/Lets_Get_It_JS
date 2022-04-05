@@ -5,15 +5,19 @@ const urock = document.querySelector("#urock");
 const upaper = document.querySelector("#upaper");
 const usiss = document.querySelector("#usiss");
 
+const btn = document.querySelector("#button")
+
 const crock = document.querySelector("#crock");
 const cpaper = document.querySelector("#cpaper");
 const csiss = document.querySelector("#csiss");
 const sel = (rps) => {
+   btn.removeAttribute("disabled")
     if (rps == "urock") {
         userpick = "rock";
         urock.style.textAlign = "left";
         upaper.style.textAlign = "";
         usiss.style.textAlign = "";
+        
     } else if (rps == "upaper") {
         userpick = "paper";
         upaper.style.textAlign = "left";
@@ -29,7 +33,6 @@ const sel = (rps) => {
 }
 
 const start = () => {
-    const btn = document.querySelector("#button")
     btn.setAttribute("disabled", true);
     let res = document.createElement("h1");
     const vs = document.getElementsByClassName("vs");
@@ -39,7 +42,6 @@ const start = () => {
 
     // 초기화
     setTimeout(() => {
-        btn.removeAttribute("disabled")
         crock.style.textAlign = "";
         cpaper.style.textAlign = "";
         csiss.style.textAlign = "";
