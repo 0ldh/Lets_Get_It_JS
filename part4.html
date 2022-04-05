@@ -71,7 +71,7 @@ use under the CCA 3.0 license (html5up.net/license) -->
             <!-- 게임판 -->
             <div class="game">
                 <div class="com">
-                    <h1 style="color: #D070FB;">Computer &nbsp;&nbsp; <span class="score">0</span></h1>
+                    <h1 style="color: #D070FB;">Computer &nbsp;&nbsp; <span class="score cscore">0</span></h1>
                     <div id="csiss" >
                         <img src="./images/siss.png">
                     </div>
@@ -87,7 +87,7 @@ use under the CCA 3.0 license (html5up.net/license) -->
                     <button id="button" onclick="start()">시작</button>
                 </div>
                 <div class="user">
-                    <h1 style="color: #7A56FE;"><span class="score">0</span>&nbsp;&nbsp; USER </h1>
+                    <h1 style="color: #7A56FE;"><span class="score uscore">0</span>&nbsp;&nbsp; USER </h1>
                     
                     <div id="usiss" onclick="sel(this.id)">
                         <img src="./images/siss.png" alt="">
@@ -135,11 +135,30 @@ use under the CCA 3.0 license (html5up.net/license) -->
             }
 
             const start = () =>{
+                const btn = document.querySelector("#button")
+                btn.setAttribute("disabled", true);
                 let res = document.createElement("h1");
                 const vs = document.getElementsByClassName("vs");
                 console.log("게임 시작");
                 const draw = Math.floor(Math.random() * 3)
                 compick = arr[draw];
+
+                
+                // 초기화
+                setTimeout(() => {
+                    btn.removeAttribute("disabled")
+                    crock.style.textAlign ="";
+                    cpaper.style.textAlign ="";
+                    csiss.style.textAlign ="";
+
+                    usiss.style.textAlign ="";
+                    upaper.style.textAlign ="";
+                    urock.style.textAlign ="";
+
+                    res.innerHTML = "";
+                    
+                }, 1000);
+
                 if (compick == "rock"){
                     crock.style.textAlign ="right";
                     cpaper.style.textAlign ="";
@@ -180,6 +199,15 @@ use under the CCA 3.0 license (html5up.net/license) -->
                         res.innerHTML = "패배...";
                     }
                 } 
+
+                // 점수
+                let usocre = document.querySelector(".uscore");
+                let csocre = document.querySelector(".cscore");
+                if(res.innerHTML == "승리!!!"){
+                    document.querySelector(".uscore").innerHTML = 1;
+                }
+                
+
             }
         </script>
     </body>
