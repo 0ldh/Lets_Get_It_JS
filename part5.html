@@ -86,8 +86,8 @@ use under the CCA 3.0 license (html5up.net/license) -->
             </nav>
             <!-- Main -->
             <div class="main" style="display:flex;">
-                <div class="test">
-                    <p>준비</p>
+                <div class="test" onclick="test()">
+                    <p class="msg">준비</p>
                     <span>준비가 완료되었으면 클릭해주세요!</span>           
                 </div>
             </div>
@@ -96,7 +96,10 @@ use under the CCA 3.0 license (html5up.net/license) -->
             </div>
         </div>
         <script>
-
+            const msg = document.getElementsByClassName("msg");
+            const test = () => {
+                console.log(msg.innerTEXT);
+            }
         </script>
     </body>
 </html>
