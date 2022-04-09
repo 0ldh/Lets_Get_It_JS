@@ -88,7 +88,7 @@ use under the CCA 3.0 license (html5up.net/license) -->
             <div class="main" style="display:flex;">
                 <div class="test" onclick="test()">
                     <p class="msg">준비</p>
-                    <span>준비가 완료되었으면 클릭해주세요!</span>           
+                    <span class="msg2">준비가 완료되었으면 클릭해주세요!</span>           
                 </div>
             </div>
             <div class="history">
@@ -96,9 +96,12 @@ use under the CCA 3.0 license (html5up.net/license) -->
             </div>
         </div>
         <script>
-            const msg = document.getElementsByClassName("msg");
+            const msg = document.querySelector(".msg");
+            const msg2 = document.querySelector(".msg2");
             const test = () => {
-                console.log(msg.innerTEXT);
+                msg.innerHTML = "시작";
+                msg2.innerHTML = "파란색이 되면 클릭해주세요!"
+                
             }
         </script>
     </body>
