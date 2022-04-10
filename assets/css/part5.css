@@ -1,0 +1,22 @@
+.main {
+    justify-content: center;
+}
+
+#test {
+    background-color: #3FE87F;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    width: 80%;
+}
+
+#test > p {
+    font-size: 100px;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+.history {
+    margin-top: 1rem;
+    text-align: center;
+}
