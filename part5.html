@@ -17,7 +17,7 @@ use under the CCA 3.0 license (html5up.net/license) -->
 
 
             #test {
-                background-color: green;
+                background-color: #3FE87F;
                 text-align: center;
                 color: black;
                 font-weight: bold;
@@ -106,9 +106,13 @@ use under the CCA 3.0 license (html5up.net/license) -->
                 setTimeout(() => {
                     document.querySelector("#test").className = "result"
                     document.querySelector("#test").style.backgroundColor = "#6FADCF";
+                    const starttime = time.getSeconds();
                     msg.innerHTML = "클릭!!";
                     msg2.innerHTML = "화면을 클릭해주세요!"
-                    
+                    document.getElementById("test").addEventListener('click', () => {
+                        const restime = time.getSeconds();
+                        console.log(restime - starttime);
+                    })
                 }, Math.floor(Math.random() * 3000));
             }
         </script>
